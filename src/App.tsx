@@ -1,11 +1,16 @@
+import { Button } from "@mui/material";
 import PWABadge from "./PWABadge.tsx";
-import "./App.css";
-import FullscreenFileViewer from "./components/FullscreenFileViewer.tsx";
+import { AddDisplayFileForm } from "./features/AddFile/components/FileForm.tsx";
+import { DisplayFileUrlList } from "./features/DisplayFile/components/DisplayFileList.tsx";
 
 function App() {
   return (
     <>
-      <FullscreenFileViewer />
+      <Button variant="contained">Hello World</Button>
+      <h2>Add DisplayFileUrl</h2>
+      <AddDisplayFileForm />
+      <h2>DisplayFileUrl List</h2>
+      <DisplayFileUrlList />
       <PWABadge />
     </>
   );
