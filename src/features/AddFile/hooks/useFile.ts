@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
-import { db } from "@/db/db";
+import useFileModel from "@/hooks/useFileModel";
 
 function useFile() {
   const [file, setFile] = useState<File>();
+  const { addFile } = useFileModel();
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -12,18 +13,10 @@ function useFile() {
   };
 
   const onClickAddFile = async () => {
-    try {
-      if (!file) return;
+    if (!file) return;
 
-      const id = await db.displayFiles.add({
-        file: file,
-        type: file.type,
-      });
-
-      console.log(`Display file URL added with ID ${id}`);
-    } catch (error) {
-      console.error("Error adding display file URL", error);
-    }
+    await addFile(file);
+    setFile(undefined);
   };
 
   return { file, handleFileChange, onClickAddFile };
