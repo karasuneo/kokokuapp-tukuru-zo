@@ -1,8 +1,8 @@
+import useFileModel from "@/hooks/useFileModel";
 import { DisplayFile } from "@/types";
-import useFile from "../hooks/useFile";
 
 export function DisplayFileUrlList() {
-  const { displayFiles } = useFile();
+  const { displayFiles } = useFileModel();
 
   return (
     <ul>
